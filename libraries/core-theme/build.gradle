@@ -1,0 +1,18 @@
+apply from: "$project.rootDir/gradle_scripts/java-version-android-library.gradle"
+
+android {
+    namespace = 'kz.zeme.moodly.core.theme'
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':core-activity')
+    implementation project(':core-di')
+    implementation project(':core-error')
+    implementation project(':core-observable')
+    implementation project(':core-res')
+
+    implementation moodlyLibs.bundles.koin
+    implementation moodlyLibs.androidx.appcompat
+    implementation moodlyLibs.androidx.core.ktx
+}
