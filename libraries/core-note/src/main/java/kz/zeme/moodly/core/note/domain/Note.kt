@@ -6,7 +6,8 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Note(
     val id: Long = 0L,
-    val emotion: Emotion,
-    val text: String,
-    val createdAt: Long,
+    val emotion: Emotion = Emotion.Anger,
+    val text: String = "",
+    val createdAt: Long = 0L,
+    val formattedDate: String = "",
 ) : Parcelable
