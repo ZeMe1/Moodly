@@ -150,7 +150,7 @@ fun TextField(
             BasicTextField(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .defaultMinSize(minHeight)
+                    .defaultMinSize(minHeight = minHeight)
                     .focusRequester(focusRequester),
                 value = textState.value,
                 singleLine = maxLines == 1,

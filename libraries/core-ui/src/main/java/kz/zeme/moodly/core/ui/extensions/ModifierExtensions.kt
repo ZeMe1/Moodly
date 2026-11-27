@@ -2,7 +2,6 @@ package kz.zeme.moodly.core.ui.extensions
 
 import androidx.compose.foundation.background
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
@@ -13,7 +12,7 @@ import kz.zeme.moodly.core.res.theme.MoodlyTheme
 fun Modifier.shimmer(shape: Shape = RectangleShape): Modifier = composed {
     shimmer(
         backgroundColor = MoodlyTheme.colors.mainShimmer,
-        shimmerColor = remember { Color(color = 0xFF272727) },
+        shimmerColor = defaultShimmerHighlightColor(),
         shape = shape,
     )
 }
