@@ -27,10 +27,14 @@ fun Activity.closeApp() {
     exitProcess(0)
 }
 
-fun Activity.enableEdgeToEdge() {
-    val systemBarStyle =
-        if (isMoodly()) SystemBarStyle.dark(Color.TRANSPARENT)
-        else SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT)
+fun Activity.enableEdgeToEdge(
+    isDark: Boolean = true,
+) {
+    val systemBarStyle = when {
+        !isMoodly() -> SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT)
+        isDark -> SystemBarStyle.dark(Color.TRANSPARENT)
+        else -> SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT)
+    }
 
     (this as? AppCompatActivity)?.enableEdgeToEdge(
         statusBarStyle = systemBarStyle,
