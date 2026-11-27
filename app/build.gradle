@@ -24,6 +24,8 @@ android {
         }
     }
 
+    addToManifest(android.defaultConfig, "APP_SCHEME", APP_SCHEME)
+
     buildTypes {
         release {
             minifyEnabled = false
@@ -58,10 +60,31 @@ android {
 dependencies {
     coreLibraryDesugaring moodlyLibs.desugarJdk
 
+    implementation project(':core')
+    implementation project(':core-error')
+    implementation project(':core-di')
+    implementation project(':core-observable')
+    implementation project(':core-res')
+    implementation project(':core-activity')
+    implementation project(':core-navigation')
+    implementation project(':core-fragment')
+    implementation project(':core-ui')
+    implementation project(':core-locale')
+    implementation project(':core-locale-view')
+
+    implementation moodlyLibs.androidx.core.ktx
+    implementation moodlyLibs.androidx.appcompat
+    implementation moodlyLibs.androidx.activity.ktx
+    implementation moodlyLibs.androidx.fragment.ktx
+    implementation moodlyLibs.material
+    implementation moodlyLibs.androidx.lifecycle.runtime.ktx
+    implementation moodlyLibs.androidx.lifecycle.livedata.ktx
+    implementation moodlyLibs.androidx.lifecycle.viewmodel.ktx
+    implementation moodlyLibs.bundles.koin
+
     implementation(platform(moodlyTooling.compose.bom))
     implementation moodlyTooling.bundles.compose
-    implementation moodlyLibs.androidx.core.ktx
-    implementation moodlyLibs.androidx.lifecycle.runtime.ktx
+    implementation moodlyTooling.compose.livedata
 
     testImplementation moodlyLibs.junit
     androidTestImplementation(platform(moodlyTooling.compose.bom))
