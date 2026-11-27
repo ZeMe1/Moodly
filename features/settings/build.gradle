@@ -1,0 +1,27 @@
+apply from: "$project.rootDir/gradle_scripts/java-version-android-library.gradle"
+apply from: "$project.rootDir/gradle_scripts/composable-android.gradle"
+
+android {
+    namespace = 'kz.zeme.moodly.feature.settings'
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':core-di')
+    implementation project(':core-error')
+    implementation project(':core-fragment')
+    implementation project(':core-navigation')
+    implementation project(':core-observable')
+    implementation project(':core-res')
+    implementation project(':core-ui')
+
+    implementation project(':core-locale-view')
+    implementation project(':core-theme-view')
+
+    implementation moodlyLibs.bundles.koin
+    implementation moodlyLibs.androidx.fragment.ktx
+    implementation moodlyLibs.material
+    implementation moodlyLibs.androidx.lifecycle.livedata.ktx
+    implementation moodlyLibs.androidx.lifecycle.viewmodel.ktx
+    implementation moodlyTooling.compose.livedata
+}
