@@ -1,0 +1,15 @@
+apply from: "$project.rootDir/gradle_scripts/java-version-android-library.gradle"
+
+android {
+    namespace = 'kz.zeme.moodly.core.observable'
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':core-error')
+
+    implementation moodlyTooling.bundles.coroutines
+    implementation moodlyLibs.androidx.annotation
+    implementation moodlyLibs.androidx.lifecycle.livedata.ktx
+    implementation moodlyLibs.androidx.lifecycle.runtime.ktx
+}
