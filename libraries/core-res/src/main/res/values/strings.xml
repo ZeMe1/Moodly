@@ -10,6 +10,59 @@
     <string name="language_picker_title">Выберите язык</string>
     <string name="language_picker_language_ru">Русский</string>
     <string name="language_picker_language_kz">Қазақша</string>
-    <string name="language_picker_language_en">Английский</string>
+    <string name="language_picker_language_en">English</string>
     <string name="language_picker_language_changed_message">Язык изменён</string>
+
+    <string name="theme_picker_title">Выберите тему</string>
+    <string name="theme_picker_light">Светлая</string>
+    <string name="theme_picker_dark">Тёмная</string>
+    <string name="theme_picker_system">Системная</string>
+    <string name="theme_picker_changed_message">Тема изменена</string>
+
+    <string name="bottom_nav_notes">Заметки</string>
+    <string name="bottom_nav_emotions">Эмоции</string>
+    <string name="bottom_nav_settings">Настройки</string>
+
+    <string name="emotion_anger">Злость</string>
+    <string name="emotion_joy">Радость</string>
+    <string name="emotion_sadness">Грусть</string>
+    <string name="emotion_calm">Спокойствие</string>
+    <string name="emotion_fear">Страх</string>
+    <string name="emotion_anxiety">Тревога</string>
+    <string name="emotion_surprise">Удивление</string>
+    <string name="emotion_tiredness">Усталость</string>
+
+    <string name="date_today">Сегодня</string>
+    <string name="date_yesterday">Вчера</string>
+    <string name="date_today_time">Сегодня, %1$s</string>
+    <string name="date_created_at">Создано %1$s</string>
+
+    <string name="note_list_title">Заметки</string>
+    <string name="note_list_empty_title">Пока нет записей</string>
+    <string name="note_list_empty_subtitle">Нажмите «+», чтобы добавить первую запись</string>
+
+    <string name="note_create_title">Новая запись</string>
+    <string name="note_create_emotion_label">Эмоция</string>
+    <string name="note_create_text_label">Запись</string>
+    <string name="note_create_text_hint">Опишите, что произошло</string>
+    <string name="note_create_save">Сохранить</string>
+
+    <string name="note_edit_title">Редактирование</string>
+    <string name="note_edit_emotion_label">Эмоция</string>
+    <string name="note_edit_text_label">Запись</string>
+    <string name="note_edit_text_hint">Опишите, что произошло</string>
+    <string name="note_edit_save">Сохранить</string>
+
+    <string name="note_delete_dialog_title">Удалить запись?</string>
+    <string name="note_delete_dialog_message">Запись будет удалена без возможности восстановления.</string>
+    <string name="note_delete_dialog_cancel">Отмена</string>
+    <string name="note_delete_dialog_confirm">Удалить</string>
+
+    <string name="emotions_title">Эмоции</string>
+    <string name="emotions_list_empty_title">Пока нет записей</string>
+    <string name="emotions_list_empty_subtitle">Записи с этой эмоцией появятся здесь</string>
+
+    <string name="settings_title">Настройки</string>
+    <string name="settings_theme">Тема интерфейса</string>
+    <string name="settings_language">Язык интерфейса</string>
 </resources>

@@ -8,8 +8,61 @@
     <string name="shared_max_char">Maximum %1$d characters</string>
 
     <string name="language_picker_title">Choose language</string>
-    <string name="language_picker_language_ru">Russian</string>
-    <string name="language_picker_language_kz">Kazakh</string>
+    <string name="language_picker_language_ru">Русский</string>
+    <string name="language_picker_language_kz">Қазақша</string>
     <string name="language_picker_language_en">English</string>
     <string name="language_picker_language_changed_message">Language changed</string>
+
+    <string name="theme_picker_title">Choose theme</string>
+    <string name="theme_picker_light">Light</string>
+    <string name="theme_picker_dark">Dark</string>
+    <string name="theme_picker_system">System</string>
+    <string name="theme_picker_changed_message">Theme changed</string>
+
+    <string name="bottom_nav_notes">Notes</string>
+    <string name="bottom_nav_emotions">Emotions</string>
+    <string name="bottom_nav_settings">Settings</string>
+
+    <string name="emotion_anger">Anger</string>
+    <string name="emotion_joy">Joy</string>
+    <string name="emotion_sadness">Sadness</string>
+    <string name="emotion_calm">Calm</string>
+    <string name="emotion_fear">Fear</string>
+    <string name="emotion_anxiety">Anxiety</string>
+    <string name="emotion_surprise">Surprise</string>
+    <string name="emotion_tiredness">Tiredness</string>
+
+    <string name="date_today">Today</string>
+    <string name="date_yesterday">Yesterday</string>
+    <string name="date_today_time">Today, %1$s</string>
+    <string name="date_created_at">Created %1$s</string>
+
+    <string name="note_list_title">Notes</string>
+    <string name="note_list_empty_title">No notes yet</string>
+    <string name="note_list_empty_subtitle">Tap "+" to add your first note</string>
+
+    <string name="note_create_title">New note</string>
+    <string name="note_create_emotion_label">Emotion</string>
+    <string name="note_create_text_label">Note</string>
+    <string name="note_create_text_hint">Describe what happened</string>
+    <string name="note_create_save">Save</string>
+
+    <string name="note_edit_title">Edit note</string>
+    <string name="note_edit_emotion_label">Emotion</string>
+    <string name="note_edit_text_label">Note</string>
+    <string name="note_edit_text_hint">Describe what happened</string>
+    <string name="note_edit_save">Save</string>
+
+    <string name="note_delete_dialog_title">Delete note?</string>
+    <string name="note_delete_dialog_message">The note will be permanently deleted.</string>
+    <string name="note_delete_dialog_cancel">Cancel</string>
+    <string name="note_delete_dialog_confirm">Delete</string>
+
+    <string name="emotions_title">Emotions</string>
+    <string name="emotions_list_empty_title">No notes yet</string>
+    <string name="emotions_list_empty_subtitle">Notes with this emotion will appear here</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_theme">Interface theme</string>
+    <string name="settings_language">Interface language</string>
 </resources>

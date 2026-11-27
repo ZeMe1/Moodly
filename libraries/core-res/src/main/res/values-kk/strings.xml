@@ -8,8 +8,61 @@
     <string name="shared_max_char">Ең көбі %1$d таңба</string>
 
     <string name="language_picker_title">Тілді таңдаңыз</string>
-    <string name="language_picker_language_ru">Орысша</string>
+    <string name="language_picker_language_ru">Русский</string>
     <string name="language_picker_language_kz">Қазақша</string>
-    <string name="language_picker_language_en">Ағылшынша</string>
+    <string name="language_picker_language_en">English</string>
     <string name="language_picker_language_changed_message">Тіл өзгертілді</string>
+
+    <string name="theme_picker_title">Тақырыпты таңдаңыз</string>
+    <string name="theme_picker_light">Жарық</string>
+    <string name="theme_picker_dark">Қараңғы</string>
+    <string name="theme_picker_system">Жүйелік</string>
+    <string name="theme_picker_changed_message">Тақырып өзгертілді</string>
+
+    <string name="bottom_nav_notes">Жазбалар</string>
+    <string name="bottom_nav_emotions">Эмоциялар</string>
+    <string name="bottom_nav_settings">Баптаулар</string>
+
+    <string name="emotion_anger">Ашу</string>
+    <string name="emotion_joy">Қуаныш</string>
+    <string name="emotion_sadness">Мұң</string>
+    <string name="emotion_calm">Тыныштық</string>
+    <string name="emotion_fear">Қорқыныш</string>
+    <string name="emotion_anxiety">Мазасыздық</string>
+    <string name="emotion_surprise">Таңданыс</string>
+    <string name="emotion_tiredness">Шаршау</string>
+
+    <string name="date_today">Бүгін</string>
+    <string name="date_yesterday">Кеше</string>
+    <string name="date_today_time">Бүгін, %1$s</string>
+    <string name="date_created_at">Құрылды %1$s</string>
+
+    <string name="note_list_title">Жазбалар</string>
+    <string name="note_list_empty_title">Әзірге жазбалар жоқ</string>
+    <string name="note_list_empty_subtitle">Алғашқы жазбаны қосу үшін «+» түймесін басыңыз</string>
+
+    <string name="note_create_title">Жаңа жазба</string>
+    <string name="note_create_emotion_label">Эмоция</string>
+    <string name="note_create_text_label">Жазба</string>
+    <string name="note_create_text_hint">Не болғанын жазыңыз</string>
+    <string name="note_create_save">Сақтау</string>
+
+    <string name="note_edit_title">Өңдеу</string>
+    <string name="note_edit_emotion_label">Эмоция</string>
+    <string name="note_edit_text_label">Жазба</string>
+    <string name="note_edit_text_hint">Не болғанын жазыңыз</string>
+    <string name="note_edit_save">Сақтау</string>
+
+    <string name="note_delete_dialog_title">Жазбаны жою?</string>
+    <string name="note_delete_dialog_message">Жазба қалпына келтіру мүмкіндігінсіз жойылады.</string>
+    <string name="note_delete_dialog_cancel">Болдырмау</string>
+    <string name="note_delete_dialog_confirm">Жою</string>
+
+    <string name="emotions_title">Эмоциялар</string>
+    <string name="emotions_list_empty_title">Әзірге жазбалар жоқ</string>
+    <string name="emotions_list_empty_subtitle">Осы эмоциядағы жазбалар осында пайда болады</string>
+
+    <string name="settings_title">Баптаулар</string>
+    <string name="settings_theme">Интерфейс тақырыбы</string>
+    <string name="settings_language">Интерфейс тілі</string>
 </resources>
