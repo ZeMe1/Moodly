@@ -26,6 +26,14 @@ import androidx.compose.ui.unit.dp
 import kz.zeme.moodly.core.res.theme.MoodlyTheme
 
 @Composable
+internal fun defaultShimmerHighlightColor(): Color {
+    val isDark = MoodlyTheme.isDark
+    return remember(isDark) {
+        if (isDark) Color(color = 0xFF272727) else Color(color = 0xFFF5F6F8)
+    }
+}
+
+@Composable
 fun TextStyle.shimmer(
     enabled: Boolean,
     backgroundColor: Color = this.color,
@@ -41,7 +49,7 @@ fun TextStyle.shimmer(
 @Composable
 fun shimmerBrush(
     backgroundColor: Color = MoodlyTheme.colors.mainShimmer,
-    shimmerColor: Color = remember { Color(color = 0xFF272727) },
+    shimmerColor: Color = defaultShimmerHighlightColor(),
     durationMs: Int = 800,
     startOffset: Offset = Offset(0f, 0f),
 ): Brush = shimmerBrush(
