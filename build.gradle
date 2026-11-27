@@ -1,0 +1,8 @@
+plugins {
+    alias(moodlyTooling.plugins.android.application) apply false
+    alias(moodlyTooling.plugins.android.library) apply false
+    alias(moodlyTooling.plugins.kotlin.android) apply false
+    alias(moodlyTooling.plugins.kotlin.parcelize) apply false
+    alias(moodlyTooling.plugins.compose.compiler) apply false
+    alias(moodlyTooling.plugins.ksp) apply false
+}

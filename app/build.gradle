@@ -1,0 +1,73 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    alias(moodlyTooling.plugins.compose.compiler)
+    alias(moodlyTooling.plugins.kotlin.parcelize)
+}
+
+apply from: "$project.rootDir/gradle_scripts/environment-constants.gradle"
+
+android {
+    namespace = 'kz.zeme.moodly'
+    compileSdk = moodlyLibs.versions.androidCompileSdkVersion.get().toInteger()
+
+    defaultConfig {
+        applicationId = "kz.zeme.moodly"
+        minSdk = moodlyLibs.versions.androidMinSdkVersion.get().toInteger()
+        targetSdk = moodlyLibs.versions.androidTargetSdkVersion.get().toInteger()
+        versionCode = VERSION_CODE
+        versionName = VERSION_NAME
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled = false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+        }
+        debug {
+            debuggable = true
+        }
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled = true
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlin {
+        jvmToolchain(17)
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring moodlyLibs.desugarJdk
+
+    implementation(platform(moodlyTooling.compose.bom))
+    implementation moodlyTooling.bundles.compose
+    implementation moodlyLibs.androidx.core.ktx
+    implementation moodlyLibs.androidx.lifecycle.runtime.ktx
+
+    testImplementation moodlyLibs.junit
+    androidTestImplementation(platform(moodlyTooling.compose.bom))
+    androidTestImplementation moodlyTooling.compose.ui.test.junit4
+    androidTestImplementation moodlyLibs.androidx.espresso.core
+    androidTestImplementation moodlyLibs.androidx.junit
+    debugImplementation moodlyTooling.compose.ui.test.manifest
+    debugImplementation moodlyTooling.compose.ui.tooling
+}

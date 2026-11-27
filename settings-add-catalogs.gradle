@@ -1,0 +1,11 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+    versionCatalogs {
+        moodlyTooling { from(files("gradle/moodly-tooling.versions.toml")) }
+        moodlyLibs { from(files("gradle/moodly-libs.versions.toml")) }
+    }
+}
