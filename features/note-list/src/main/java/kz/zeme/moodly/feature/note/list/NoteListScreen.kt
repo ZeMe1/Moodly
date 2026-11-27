@@ -84,35 +84,45 @@ private fun NoteListScreen(
     controller: NoteListController,
     lazyListState: LazyListState = rememberLazyListState(),
 ) {
-    when (state) {
-        null,
-        is ViewState.Loading.Skeleton -> NoteListShimmerView(
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MoodlyTheme.colors.mainBg)
+            .statusBarsPadding(),
+    ) {
+        Box(
             modifier = Modifier
-                .fillMaxSize()
-                .background(MoodlyTheme.colors.mainBg)
-                .statusBarsPadding(),
-        )
+                .weight(1f)
+                .fillMaxWidth(),
+        ) {
+            when (state) {
+                null,
+                is ViewState.Loading.Skeleton -> NoteListShimmerView(
+                    modifier = Modifier.fillMaxSize(),
+                )
 
-        is ViewState.Error -> DefaultErrorView(
-            modifier = Modifier
-                .fillMaxSize()
-                .statusBarsPadding(),
-            error = state.error,
-            onRefresh = controller::onRefresh,
-        )
+                is ViewState.Error -> DefaultErrorView(
+                    modifier = Modifier.fillMaxSize(),
+                    error = state.error,
+                    onRefresh = controller::onRefresh,
+                )
 
-        is ViewState.Loading.ProgressBar,
-        is ViewState.Data -> state.data?.let {
-            NoteListContent(
-                data = it,
-                controller = controller,
-                lazyListState = lazyListState,
-            )
-        } ?: NoteListShimmerView(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MoodlyTheme.colors.mainBg)
-                .statusBarsPadding(),
+                is ViewState.Loading.ProgressBar,
+                is ViewState.Data -> state.data?.let {
+                    NoteListContent(
+                        data = it,
+                        controller = controller,
+                        lazyListState = lazyListState,
+                    )
+                } ?: NoteListShimmerView(
+                    modifier = Modifier.fillMaxSize(),
+                )
+            }
+        }
+
+        MoodlyBottomBar(
+            selectedTab = MoodlyBottomTab.Notes,
+            onTabClick = controller::onTabClick,
         )
     }
 }
@@ -124,10 +134,7 @@ private fun NoteListContent(
     lazyListState: LazyListState,
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MoodlyTheme.colors.mainBg)
-            .statusBarsPadding(),
+        modifier = Modifier.fillMaxSize(),
     ) {
         Text(
             modifier = Modifier
@@ -184,11 +191,6 @@ private fun NoteListContent(
                 )
             }
         }
-
-        MoodlyBottomBar(
-            selectedTab = MoodlyBottomTab.Notes,
-            onTabClick = controller::onTabClick,
-        )
     }
 }
 
@@ -306,11 +308,6 @@ private fun NoteListShimmerView(
         ) {
             noteListShimmerSection()
         }
-
-        MoodlyBottomBar(
-            selectedTab = MoodlyBottomTab.Notes,
-            onTabClick = {},
-        )
     }
 }
 

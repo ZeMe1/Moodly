@@ -71,6 +71,16 @@ dependencies {
     implementation project(':core-ui')
     implementation project(':core-locale')
     implementation project(':core-locale-view')
+    implementation project(':core-theme')
+    implementation project(':core-theme-view')
+    implementation project(':core-note')
+    implementation project(':note-list')
+    implementation project(':note-create')
+    implementation project(':note-detail')
+    implementation project(':note-edit')
+    implementation project(':emotions')
+    implementation project(':emotions-list')
+    implementation project(':settings')
 
     implementation moodlyLibs.androidx.core.ktx
     implementation moodlyLibs.androidx.appcompat

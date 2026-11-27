@@ -195,6 +195,7 @@ private fun NoteEditContent(
                 minHeight = 160.dp,
                 text = data.text,
                 hint = stringResource(R.string.note_edit_text_hint),
+                maxLines = 6,
                 containerColor = MoodlyTheme.colors.inputBg,
                 shape = RoundedCornerShape(14.dp),
                 contentPadding = PaddingValues(14.dp),
@@ -221,7 +222,7 @@ private fun NoteEditContent(
                     .height(50.dp)
                     .clip(RoundedCornerShape(14.dp))
                     .background(
-                        if (isSaveEnabled) MoodlyTheme.colors.buttonPrimary
+                        if (isSaveEnabled) MoodlyTheme.colors.textPrimary
                         else MoodlyTheme.colors.buttonDisabled,
                     )
                     .clickableHaptic(
@@ -232,7 +233,9 @@ private fun NoteEditContent(
             ) {
                 Text(
                     text = stringResource(R.string.note_edit_save),
-                    style = MoodlyTheme.typography.labelLarge.primary().bold().enabled(isSaveEnabled),
+                    style = MoodlyTheme.typography.labelLarge.bold(),
+                    color = if (isSaveEnabled) MoodlyTheme.colors.basicDark
+                    else MoodlyTheme.colors.textPrimary.enabled(false),
                 )
             }
         }
