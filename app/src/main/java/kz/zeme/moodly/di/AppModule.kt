@@ -37,6 +37,14 @@ val appModule = module {
         AppGlobalNavigator(
             activityProvider = get(),
             languagePickerRouter = get(),
+            themePickerRouter = get(),
+            noteListRouter = get(),
+            noteCreateRouter = get(),
+            noteDetailRouter = get(),
+            noteEditRouter = get(),
+            emotionsRouter = get(),
+            emotionsListRouter = get(),
+            settingsRouter = get(),
         )
     }.binds(
         ExternalModulesNavigator::class,

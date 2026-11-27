@@ -78,7 +78,7 @@ fun MoodlyBottomBar(
                     modifier = Modifier
                         .weight(1f)
                         .height(62.dp)
-                        .clickableHaptic { onTabClick(tab) },
+                        .clickableHaptic(withIndication = false) { onTabClick(tab) },
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(
                         space = 4.dp,

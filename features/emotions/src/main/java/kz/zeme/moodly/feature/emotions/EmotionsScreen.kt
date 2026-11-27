@@ -5,13 +5,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.LazyGridState
@@ -21,98 +19,26 @@ import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import kz.zeme.moodly.core.error.BaseError
-import kz.zeme.moodly.core.error.UnexpectedError
 import kz.zeme.moodly.core.note.domain.Emotion
-import kz.zeme.moodly.core.observable.ViewState
 import kz.zeme.moodly.core.res.R
 import kz.zeme.moodly.core.res.theme.MoodlyTheme
 import kz.zeme.moodly.core.res.theme.bold
 import kz.zeme.moodly.core.res.theme.primary
-import kz.zeme.moodly.core.ui.components.DefaultErrorScreen
 import kz.zeme.moodly.core.ui.components.MoodlyBottomBar
 import kz.zeme.moodly.core.ui.components.MoodlyBottomTab
 import kz.zeme.moodly.core.ui.extensions.compose.clickableHaptic
-import kz.zeme.moodly.core.ui.extensions.shimmer
 
 @Composable
 internal fun EmotionsScreen(
-    state: State<ViewState<List<Emotion>>?>,
-    controller: EmotionsController,
-) {
-    EmotionsScreen(
-        state = state.value,
-        controller = controller,
-    )
-}
-
-@Composable
-private fun DefaultErrorView(
-    modifier: Modifier = Modifier,
-    error: BaseError? = null,
-    onRefresh: () -> Unit,
-) {
-    DefaultErrorScreen(
-        modifier = modifier,
-        errorMessage = error?.message ?: stringResource(R.string.shared_something_went_wrong),
-        onRefresh = onRefresh,
-    )
-}
-
-@Composable
-private fun EmotionsScreen(
-    state: ViewState<List<Emotion>>?,
     controller: EmotionsController,
     lazyGridState: LazyGridState = rememberLazyGridState(),
-) {
-    when (state) {
-        null,
-        is ViewState.Loading.Skeleton -> EmotionsShimmerView(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MoodlyTheme.colors.mainBg)
-                .statusBarsPadding(),
-        )
-
-        is ViewState.Error -> DefaultErrorView(
-            modifier = Modifier
-                .fillMaxSize()
-                .statusBarsPadding(),
-            error = state.error,
-            onRefresh = controller::onRefresh,
-        )
-
-        is ViewState.Loading.ProgressBar,
-        is ViewState.Data -> state.data?.let {
-            EmotionsContent(
-                emotions = it,
-                controller = controller,
-                lazyGridState = lazyGridState,
-            )
-        } ?: EmotionsShimmerView(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MoodlyTheme.colors.mainBg)
-                .statusBarsPadding(),
-        )
-    }
-}
-
-@Composable
-private fun EmotionsContent(
-    emotions: List<Emotion>,
-    controller: EmotionsController,
-    lazyGridState: LazyGridState,
 ) {
     Column(
         modifier = Modifier
@@ -143,7 +69,6 @@ private fun EmotionsContent(
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             emotionsGridSection(
-                emotions = emotions,
                 onEmotionClick = controller::onEmotionClick,
             )
         }
@@ -156,10 +81,9 @@ private fun EmotionsContent(
 }
 
 private fun LazyGridScope.emotionsGridSection(
-    emotions: List<Emotion>,
     onEmotionClick: (Emotion) -> Unit,
 ) {
-    items(items = emotions) { emotion ->
+    items(items = Emotion.entries) { emotion ->
         EmotionCategoryCardView(
             emotion = emotion,
             onClick = { onEmotionClick(emotion) },
@@ -190,57 +114,6 @@ private fun EmotionCategoryCardView(
     }
 }
 
-@Composable
-private fun EmotionsShimmerView(
-    modifier: Modifier = Modifier,
-) {
-    Column(modifier = modifier) {
-        Spacer(
-            modifier = Modifier
-                .padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = 14.dp)
-                .width(120.dp)
-                .height(30.dp)
-                .clip(RoundedCornerShape(8.dp))
-                .background(MoodlyTheme.colors.mainShimmer)
-                .shimmer(),
-        )
-
-        LazyVerticalGrid(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth(),
-            columns = GridCells.Fixed(2),
-            contentPadding = PaddingValues(
-                start = 16.dp,
-                end = 16.dp,
-                bottom = 16.dp,
-            ),
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
-        ) {
-            emotionsShimmerSection()
-        }
-
-        MoodlyBottomBar(
-            selectedTab = MoodlyBottomTab.Emotions,
-            onTabClick = {},
-        )
-    }
-}
-
-private fun LazyGridScope.emotionsShimmerSection() {
-    items(8) {
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(96.dp)
-                .clip(RoundedCornerShape(16.dp))
-                .background(MoodlyTheme.colors.mainShimmer)
-                .shimmer(),
-        )
-    }
-}
-
 private fun Emotion.titleRes(): Int = when (this) {
     Emotion.Anger -> R.string.emotion_anger
     Emotion.Joy -> R.string.emotion_joy
@@ -264,48 +137,15 @@ private fun Emotion.color(): Color = when (this) {
     Emotion.Tiredness -> MoodlyTheme.emotionColors.tiredness
 }
 
-internal val emotionsControllerStub = object : EmotionsController {
-    override fun onStart() = Unit
-    override fun onRefresh() = Unit
+private val emotionsControllerStub = object : EmotionsController {
+
     override fun onEmotionClick(emotion: Emotion) = Unit
+
     override fun onTabClick(tab: MoodlyBottomTab) = Unit
-}
-
-internal val emotionsListStub = Emotion.entries.toList()
-
-private data class EmotionsScreenPreviewParameter(
-    val state: ViewState<List<Emotion>>,
-    val lazyGridState: LazyGridState = LazyGridState(),
-)
-
-private class EmotionsScreenPreviewParameterProvider :
-    PreviewParameterProvider<EmotionsScreenPreviewParameter> {
-
-    override val values: Sequence<EmotionsScreenPreviewParameter> = sequenceOf(
-        EmotionsScreenPreviewParameter(
-            state = ViewState.Data(emotionsListStub),
-        ),
-        EmotionsScreenPreviewParameter(
-            state = ViewState.Data(emptyList()),
-        ),
-        EmotionsScreenPreviewParameter(
-            state = ViewState.Loading.Skeleton(),
-        ),
-        EmotionsScreenPreviewParameter(
-            state = ViewState.Error(UnexpectedError()),
-        ),
-    )
 }
 
 @Preview(showBackground = true)
 @Composable
-private fun EmotionsScreenPreview(
-    @PreviewParameter(EmotionsScreenPreviewParameterProvider::class)
-    parameter: EmotionsScreenPreviewParameter,
-) {
-    EmotionsScreen(
-        state = parameter.state,
-        controller = emotionsControllerStub,
-        lazyGridState = parameter.lazyGridState,
-    )
+private fun EmotionsScreenPreview() {
+    EmotionsScreen(controller = emotionsControllerStub)
 }
