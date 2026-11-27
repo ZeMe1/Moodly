@@ -1,0 +1,17 @@
+apply from: "$project.rootDir/gradle_scripts/java-version-android-library.gradle"
+
+android {
+    namespace = 'kz.zeme.moodly.core.navigation'
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':core-di')
+    implementation project(':core-error')
+    implementation project(':core-observable')
+
+    implementation moodlyLibs.bundles.koin
+    implementation moodlyLibs.androidx.annotation
+    implementation moodlyLibs.androidx.fragment.ktx
+    implementation moodlyLibs.androidx.lifecycle.livedata.ktx
+}
