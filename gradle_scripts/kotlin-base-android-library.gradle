@@ -1,0 +1,19 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'org.jetbrains.kotlin.plugin.parcelize'
+
+android {
+    compileSdk = moodlyLibs.versions.androidCompileSdkVersion.get().toInteger()
+
+    defaultConfig {
+        minSdk = moodlyLibs.versions.androidMinSdkVersion.get().toInteger()
+    }
+    lint {
+        disable.add('NullSafeMutableLiveData')
+    }
+}
+
+dependencies {
+    implementation moodlyTooling.kotlin.stdLib
+    implementation moodlyTooling.kotlin.collectionsImmutable
+}
